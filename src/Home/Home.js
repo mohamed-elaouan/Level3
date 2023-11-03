@@ -18,6 +18,7 @@ import { getAuth, sendEmailVerification } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 //Tasks
 import Tasks from "./Tasks";
+import { useTranslation } from "react-i18next";
 function Home() {
   const navigate = useNavigate();
   const [FrgPsw, setFrgPsw] = useState(false);
@@ -33,6 +34,7 @@ function Home() {
   const [TaskArray, setTaskArray] = useState([]);
   const [taskText, setTaskText] = useState("");
   const [user, loading, error] = useAuthState(auth);
+  const { t, i18n } = useTranslation();
   if (user && !user.emailVerified) {
     return (
       <div>
@@ -188,12 +190,12 @@ function Home() {
           <Tasks user={user} db={db} />
           <section>
             <button
-              className="btnVal"
+              className="btnVal" dir={i18n.language === "en"  ? "ltr" : i18n.language === "fr"?"ltr":"rtl"}
               onClick={() => {
                 setFrgPsw(true);
               }}
             >
-              Add New Task <i className="fa-solid fa-plus fa-sm"></i>
+              {i18n.language === "en" ? "Add New Task" : i18n.language === "fr"?"Ajouté Nouvelle Task":"اضافة مهمة جديدة "} <i className="fa-solid fa-plus fa-sm"></i>
             </button>
           </section>
 

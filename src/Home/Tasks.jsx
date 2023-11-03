@@ -5,6 +5,7 @@ import { collection, orderBy, query, limit, where } from "firebase/firestore";
 
 import ReactLoading from "react-loading";
 import Moment from "react-moment";
+import { useTranslation } from "react-i18next";
 //import 'moment-timezone';
 const Tasks = ({ user, db }) => {
   //Order and etat de Completed:
@@ -12,7 +13,7 @@ const Tasks = ({ user, db }) => {
   const [SelestValue, setSelestValue] = useState("All Task");
 
   const btnOrder = useRef(null);
-
+  const { t, i18n } = useTranslation();
   const [Disable, setDisable] = useState(true);
   const [Query, setQuery] = useState(
     query(
@@ -58,7 +59,7 @@ const Tasks = ({ user, db }) => {
               setQuery(query(collection(db, user.uid), orderBy("Id", "desc")));
               setOpacite(false);
             }}
-            value={"Newest first"}
+            value={i18n.language === "en" ? "Newest first" : i18n.language === "fr"?"Le plus récent d'abord":"جدد الى الاقدم"}
           />}
 
           {Disable &&<input
@@ -69,9 +70,9 @@ const Tasks = ({ user, db }) => {
               setQuery(query(collection(db, user.uid), orderBy("Id", "asc")));
               setOpacite(true);
             }}
-            value={"Oldest first"}
+            value={i18n.language === "en" ? "Oldest first" : i18n.language === "fr"?"Le plus ancien en premier":"الاقدم الى الجدد"}
           /> }
-          <select
+          <select dir={i18n.language === "en"  ? "ltr" : i18n.language === "fr"?"ltr":"rtl"}
             id="browsers" 
             value={SelestValue}
             onChange={(eo) => {
@@ -105,9 +106,9 @@ const Tasks = ({ user, db }) => {
               }
             }}
           >
-            <option value="All Tasks"> All Tasks </option>
-            <option value="Completed"> Completed </option>
-            <option value="Not Completed"> Not Completed </option>
+            <option value="All Tasks"> {i18n.language === "en" ? "All Tasks" : i18n.language === "fr"?"Tout Mission ":"جمبع المهمات "} </option>
+            <option value="Completed"> {i18n.language === "en" ? "Completed" : i18n.language === "fr"?"Complété":"المكتملة "} </option>
+            <option value="Not Completed"> {i18n.language === "en" ? "Not Completed" : i18n.language === "fr"?"ne Compléte pas":"غير المكتملة "} </option>
           </select>
           
         </section>
@@ -136,7 +137,7 @@ const Tasks = ({ user, db }) => {
               );
             })
           ) : (
-            <h1>Felicitation Pour Terminé Tout Les Tasks</h1>
+            <h1>{i18n.language === "en" ? "There are no Tasks" : i18n.language === "fr"?"Il n'y a pas de mission":"لا توجد مهمات "}</h1>
           )}
         </section>
       </div>

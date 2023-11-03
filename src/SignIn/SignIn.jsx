@@ -37,7 +37,7 @@ const SignIn = () => {
       <Header></Header>
       <div className="mere">
         {FrgPsw && (
-          <ModalFrgPss close={setFrgPsw}>
+          <ModalFrgPss close={setFrgPsw} >
             <h4>Forget PassWord :</h4>
             <input
               required
@@ -83,7 +83,7 @@ const SignIn = () => {
         )}
         <br />
         <form
-          className="form"
+          className="formSignIn"
           onSubmit={(eo) => {
             eo.preventDefault();
           }}

@@ -7,7 +7,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Lang": "Languge",
+      "Lang": "Language",
       "Home": "Home",
       "Sup": "Support",
       "Cat": "Category",
@@ -36,7 +36,7 @@ i18n.use(LanguageDetector)
   .init({
     resources,
     detection:{
-      order: ['htmlTag','localStorage'],
+      order: ['localStorage','htmlTag'],
       caches: ['localStorage'],
     },
 

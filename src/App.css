@@ -230,14 +230,19 @@
 
 .form {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
   font-size: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
-
+.formSignIn{
+  display: flex;
+    align-items: flex-start;
+    font-size: 18px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 .txt {
   background-color: rgb(218, 212, 212);
   padding: 10px 10px;
