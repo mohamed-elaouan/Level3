@@ -26,7 +26,9 @@ const SignIn = () => {
   const [Existe, setExiste] = useState(false);
   /*frogetPassword*/
   const [FrgPsw, setFrgPsw] = useState(false);
-
+  const ClearModel = (params) => {
+    setFrgPsw(false);
+  }
   const navigate = useNavigate();
   return (
     <div>
@@ -37,7 +39,7 @@ const SignIn = () => {
       <Header></Header>
       <div className="mere">
         {FrgPsw && (
-          <ModalFrgPss close={setFrgPsw} >
+          <ModalFrgPss close={setFrgPsw} ClearModel={ClearModel} children={undefined} >
             <h4>Forget PassWord :</h4>
             <input
               required

@@ -18,13 +18,7 @@ const Tasks = ({ user, db }) => {
   const [Query, setQuery] = useState(
     query(
       collection(db, user.uid),
-      orderBy("Id", "asc") &&
-        // (Completed
-        //   ? where("Completed", "==", true)
-        //   : Completed === false
-        //   ? where("Completed", "==", false)
-        //   : true)
-        where("Completed", "==", false)
+      orderBy("Id", "asc") && where("Completed", "==", false)
     )
   );
   const [Opacite, setOpacite] = useState(true);
@@ -50,30 +44,55 @@ const Tasks = ({ user, db }) => {
     return (
       <div className="GrandParent">
         <section className="OPIONS">
-          {Disable && <input
-            ref={btnOrder}
-            type="button"
-            className="btn btn-primary"
-            style={{ opacity: Opacite ? 0.3 : 1 }}
-            onClick={() => {
-              setQuery(query(collection(db, user.uid), orderBy("Id", "desc")));
-              setOpacite(false);
-            }}
-            value={i18n.language === "en" ? "Newest first" : i18n.language === "fr"?"Le plus récent d'abord":"جدد الى الاقدم"}
-          />}
+          {Disable && (
+            <input
+              ref={btnOrder}
+              type="button"
+              className="btn btn-primary"
+              style={{ opacity: Opacite ? 0.3 : 1 }}
+              onClick={() => {
+                setQuery(
+                  query(collection(db, user.uid), orderBy("Id", "desc"))
+                );
+                setOpacite(false);
+              }}
+              value={
+                i18n.language === "en"
+                  ? "Newest first"
+                  : i18n.language === "fr"
+                  ? "Le plus récent d'abord"
+                  : "جدد الى الاقدم"
+              }
+            />
+          )}
 
-          {Disable &&<input
-            type="button"
-            className="btn btn-primary"
-            style={{ opacity: !Opacite ? 0.3 : 1 }}
-            onClick={() => {
-              setQuery(query(collection(db, user.uid), orderBy("Id", "asc")));
-              setOpacite(true);
-            }}
-            value={i18n.language === "en" ? "Oldest first" : i18n.language === "fr"?"Le plus ancien en premier":"الاقدم الى الجدد"}
-          /> }
-          <select dir={i18n.language === "en"  ? "ltr" : i18n.language === "fr"?"ltr":"rtl"}
-            id="browsers" 
+          {Disable && (
+            <input
+              type="button"
+              className="btn btn-primary"
+              style={{ opacity: !Opacite ? 0.3 : 1 }}
+              onClick={() => {
+                setQuery(query(collection(db, user.uid), orderBy("Id", "asc")));
+                setOpacite(true);
+              }}
+              value={
+                i18n.language === "en"
+                  ? "Oldest first"
+                  : i18n.language === "fr"
+                  ? "Le plus ancien en premier"
+                  : "الاقدم الى الجدد"
+              }
+            />
+          )}
+          <select
+            dir={
+              i18n.language === "en"
+                ? "ltr"
+                : i18n.language === "fr"
+                ? "ltr"
+                : "rtl"
+            }
+            id="browsers"
             value={SelestValue}
             onChange={(eo) => {
               if (eo.target.value === "Completed") {
@@ -85,7 +104,6 @@ const Tasks = ({ user, db }) => {
                 );
                 setSelestValue(eo.target.value);
                 setDisable(false);
-
               }
               if (eo.target.value === "Not Completed") {
                 setQuery(
@@ -95,22 +113,41 @@ const Tasks = ({ user, db }) => {
                   )
                 );
                 setSelestValue(eo.target.value);
-                setDisable(false)
+                setDisable(false);
               }
               if (eo.target.value === "All Tasks") {
                 setOpacite(true);
                 setQuery(query(collection(db, user.uid), orderBy("Id", "asc")));
                 setSelestValue(eo.target.value);
                 setDisable(true);
-                
               }
             }}
           >
-            <option value="All Tasks"> {i18n.language === "en" ? "All Tasks" : i18n.language === "fr"?"Tout Mission ":"جمبع المهمات "} </option>
-            <option value="Completed"> {i18n.language === "en" ? "Completed" : i18n.language === "fr"?"Complété":"المكتملة "} </option>
-            <option value="Not Completed"> {i18n.language === "en" ? "Not Completed" : i18n.language === "fr"?"ne Compléte pas":"غير المكتملة "} </option>
+            <option value="All Tasks">
+              {" "}
+              {i18n.language === "en"
+                ? "All Tasks"
+                : i18n.language === "fr"
+                ? "Tout Mission "
+                : "جمبع المهمات "}{" "}
+            </option>
+            <option value="Completed">
+              {" "}
+              {i18n.language === "en"
+                ? "Completed"
+                : i18n.language === "fr"
+                ? "Complété"
+                : "المكتملة "}{" "}
+            </option>
+            <option value="Not Completed">
+              {" "}
+              {i18n.language === "en"
+                ? "Not Completed"
+                : i18n.language === "fr"
+                ? "ne Compléte pas"
+                : "غير المكتملة "}{" "}
+            </option>
           </select>
-          
         </section>
         <section className="Tasks">
           {value.docs.length !== 0 ? (
@@ -137,7 +174,13 @@ const Tasks = ({ user, db }) => {
               );
             })
           ) : (
-            <h1>{i18n.language === "en" ? "There are no Tasks" : i18n.language === "fr"?"Il n'y a pas de mission":"لا توجد مهمات "}</h1>
+            <h1>
+              {i18n.language === "en"
+                ? "There are no Tasks"
+                : i18n.language === "fr"
+                ? "Il n'y a pas de mission"
+                : "لا توجد مهمات "}
+            </h1>
           )}
         </section>
       </div>

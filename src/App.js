@@ -9,7 +9,7 @@ import EditTask from "./EditTaskFile/EditTask";
 import NotFound from "./Error404";
 import { useContext } from "react";
 import ThemeProvider from "./Context/DataContext";
-import "./Compenent/Themes.css"
+import "./Compenent/Themes.css";
 
 //React Route:
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -18,39 +18,42 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement: <NotFound/>,
-  },{
+    errorElement: <NotFound />,
+  },
+  {
     path: "/SignIn",
     element: <SignIn />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/Categorie",
     // @ts-ignore
     element: <Categorie />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/Contact",
     // @ts-ignore
     element: <Contact />,
-    errorElement: <NotFound/>,
-  },{
+    errorElement: <NotFound />,
+  },
+  {
     path: "/SignUp",
     element: <SignUp />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/Profil",
     // @ts-ignore
     element: <Profil />,
-    errorElement: <NotFound/>,
-  },{
+    errorElement: <NotFound />,
+  },
+  {
     path: "/TaskEdit/:id",
     // @ts-ignore
-    element: <EditTask/>,
-    errorElement: <NotFound/>,
-  }
+    element: <EditTask />,
+    errorElement: <NotFound />,
+  },
 ]);
 
 function App() {

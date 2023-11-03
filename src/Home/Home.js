@@ -26,9 +26,6 @@ function Home() {
   //order data
   
   //Filter ca depend Completed
-
-  
-
   const [EtatAlert, setEtatAlert] = useState("");
   const [LodingAnimate, setLodingAnimate] = useState(false);
   const [TaskArray, setTaskArray] = useState([]);

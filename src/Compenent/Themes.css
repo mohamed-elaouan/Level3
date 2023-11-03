@@ -18,7 +18,9 @@
 .main.Dark .Pro,
 .main.Dark h3,
 .main.Dark li,
-.main.Dark h4,.main.Dark .ListLangue li,
+.main.Dark h4,
+.main.Dark .ListLangue li,
+.main.Dark .ListProfil li,
 .main.Dark p,
 .main.Dark .fa-pen-to-square,
 .main.Dark input[type="text"],
@@ -30,25 +32,27 @@
   scale: 1.1;
   color: violet !important;
 }
-.main.Dark .ListLangue li{
+.main.Dark .ListLangue li,.main.Dark .ListProfil li{
   background-color: rgb(41, 0, 79);
 }
 
-.main.Dark .ListLangue{
+.main.Dark .ListLangue,.main.Dark .ListProfil{
   border-top: 5px solid blueviolet;
 }
-.main.Light .ListLangue{
+.main.Light .ListLangue , .main.Light .ListProfil{
   border-top: 5px solid rgb(41, 0, 79);
 }
 
-.main.Light .ListLangue li{
+.main.Light .ListLangue li,.main.Light .ListProfil li{
   background-color: whitesmoke;
 }
 
 
 .main.Light h3,
 .main.Light input[type="text"]
-.main.Light h1,.main.Light .ListLangue li,
+.main.Light h1,
+.main.Light .ListLangue li,
+.main.Light .ListProfil li,
 .main.Light h2,
 .main.Light li,
 .main.Light .Pro,
@@ -287,13 +291,14 @@
 
 
 /*Langue style*/
-.Langue:hover .ListLangue{
+.Langue:hover .ListLangue,.Langue:hover .ListProfil{
   display: block;
 }
 
-.ListLangue{
+.ListProfil{
   list-style: none;
   position: absolute;
+  right: 30px;
   margin-top: 8px;
   display: none;
   transition: 0.6s;
@@ -305,11 +310,26 @@
   padding-left: 0px;
   
 }
-.ListLangue li:hover{
+.ListLangue{
+  list-style: none;
+  position: absolute;
+  margin-top: 8px;
+  right: 96px;
+  display: none;
+  transition: 0.6s;
+  width: 140px;
+  transition: 0.7s;
+  height:fit-content;
+  border-radius: 10px;
+  z-index: 5;
+  padding-left: 0px;
+  
+}
+.ListLangue li:hover,.ListProfil li:hover{
   font-size: 17px;
   font-weight: 500;
 }
-.ListLangue li{
+.ListLangue li,.ListProfil li{
   transition: 0.1s;
   text-align: start;
   padding: 5px 8px;
@@ -318,7 +338,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.ListLangue li:nth-child(2),.ListLangue li:nth-child(1) {
+.ListLangue li:nth-child(2),.ListLangue li:nth-child(1) ,.ListProfil li:nth-child(2),.ListProfil li:nth-child(1) {
   border-bottom: 1px solid black;
 }
 
